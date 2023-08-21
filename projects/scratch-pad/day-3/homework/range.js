@@ -24,19 +24,19 @@
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     var rangeArray = [];
-    if (start > end) {
+    if (start < end) {
       for (var i = start; i < end; i++) {
-        return(rangeArray.push(i));
-
+        rangeArray.push(i);
       }
     }
 
-    else if (start < end) {
+    else if (start > end) {
         for (var i = end; i > start; i--) {
-        return(rangeArray.push(i));
-        }  
+          rangeArray.push(i);
+        }
     }
 
+    return rangeArray;
     
     
     

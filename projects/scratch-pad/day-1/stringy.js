@@ -130,6 +130,7 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    return args.join('');
     
     // YOUR CODE ABOVE HERE //
 }
@@ -168,13 +169,20 @@ function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     stringOne.toLowerCase();
     stringTwo.toLowerCase();
-    var alph = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v,  w, x, y, z];
-    alph.sort();
 
-    if (stringOne === stringTwo) {
-        return 0;
+    var compare = stringOne.localeCompare(stringTwo);
+
+    if (compare > 0) {
+        return -1;
     }
 
+    else if (compare < 0) {
+        return 1;
+    }
+
+    else {
+        return 0;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -189,7 +197,22 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    stringOne.toLowerCase();
+    stringTwo.toLowerCase();
 
+    var compare = stringTwo.localeCompare(stringOne);
+
+    if (compare > 0) {
+        return -1;
+    }
+
+    else if (compare < 0) {
+        return 1;
+    }
+
+    else {
+        return 0;
+    }
 
 
 
