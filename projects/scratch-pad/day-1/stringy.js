@@ -57,7 +57,9 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-    
+    var newString = string.split(' ').join('-').toLowerCase();
+    return (newString);
+
 
     // YOUR CODE ABOVE HERE //
 }
@@ -76,7 +78,9 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-    return string.startsWith(char);
+    var tempString = string.toLowerCase();
+    var tempChar = char.toLowerCase();
+    return (tempString.startsWith(tempChar));
     // YOUR CODE ABOVE HERE //
 }
 
@@ -95,8 +99,8 @@ function beginsWith(string, char) {
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
     var tempString = string.toLowerCase();
-
-    return (string.endsWith(char));
+    var tempChar = char.toLowerCase();
+    return (tempString.endsWith(tempChar));
     // YOUR CODE ABOVE HERE //
 }
 
@@ -107,7 +111,7 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    return stringOne += stringTwo; 
+    return stringOne.concat('', stringTwo);
 
 
     // YOUR CODE ABOVE HERE //
@@ -126,7 +130,7 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-    args.splice()
+    
     // YOUR CODE ABOVE HERE //
 }
 
@@ -162,9 +166,14 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    stringOne.toLowerCase();
+    stringTwo.toLowerCase();
     var alph = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v,  w, x, y, z];
+    alph.sort();
 
-    
+    if (stringOne === stringTwo) {
+        return 0;
+    }
 
 
     // YOUR CODE ABOVE HERE //
