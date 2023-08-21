@@ -45,10 +45,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-        return function(string) {
-            return string.startsWith(startsWith);
+    string1.toLowerCase();
+    startsWith.toLowerCase();
 
-        }
+    return function(string1) {
+        string1.split();
+        return string1[1] === startsWith;
+    }
     
     // YOUR CODE ABOVE HERE //
 }
