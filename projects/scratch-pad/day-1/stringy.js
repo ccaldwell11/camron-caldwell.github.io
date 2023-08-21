@@ -57,7 +57,7 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-    return string.split();
+    
 
     // YOUR CODE ABOVE HERE //
 }
@@ -76,10 +76,7 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-    string.toLowerCase();
-    char.toLowerCase();
     return string.startsWith(char);
-    
     // YOUR CODE ABOVE HERE //
 }
 
@@ -97,9 +94,9 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
+    var tempString = string.toLowerCase();
 
-
-
+    return (string.endsWith(char));
     // YOUR CODE ABOVE HERE //
 }
 
@@ -165,7 +162,9 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    var alph = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v,  w, x, y, z];
 
+    
 
 
     // YOUR CODE ABOVE HERE //
