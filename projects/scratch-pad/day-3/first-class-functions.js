@@ -45,13 +45,6 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    string1.toLowerCase();
-    startsWith.toLowerCase();
-
-    return function(string1) {
-        string1.split();
-        return string1[1] === startsWith;
-    }
     
     // YOUR CODE ABOVE HERE //
 }
@@ -63,12 +56,6 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    return function(stringNew) {
-        const i = stringNew.length - 1;
-        return stringNew[i] === endsWith;
-    };
-    
-    
     
     // YOUR CODE ABOVE HERE //
 }
@@ -82,7 +69,8 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+    return strings.map(modify);
+
     
     
     
@@ -100,8 +88,12 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    for (const string of strings) {
+        if (!test(string)) {
+            return false;
+        }
+    }
+    return true;
     
     
     // YOUR CODE ABOVE HERE //

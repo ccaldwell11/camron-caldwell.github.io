@@ -40,11 +40,7 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    return typeof value === 'object' || !Array.isArray(value) && value !== null && !(value instanceof Date);
-
-    
-    
-    
+    return (typeof value === 'object' && value !== null && !(value instanceof Date)) || Array.isArray(value);
     // YOUR CODE ABOVE HERE //
 }
 
