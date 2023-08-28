@@ -10,3 +10,8 @@
 7) In terminal type => npm install -g opspark
 8) In terminal, type => os install
 9) Select project from dropdown
+
+## Git Commands
+1) In terminal, type => git add -A
+2) In terminal, type => git commit -m "describe commit"
+3) In terminal, type => git push
