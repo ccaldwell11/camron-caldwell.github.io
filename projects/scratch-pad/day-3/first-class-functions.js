@@ -45,7 +45,16 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    var upper = startsWith.toUpperCase () ;
+    return function(string) {
+        var newString = string.toUpperCase();
+        if (newString.charAt(0) === upper) {
+        return true;
+        } 
+        else {
+        return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -56,7 +65,16 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    var upper = endsWith.toUpperCase () ;
+    return function(string) {
+        var newString = string.toUpperCase();
+        if (newString.charAt(string.length - 1) === upper) {
+        return true;
+        } 
+        else {
+        return false;
+        }
+    }
     // YOUR CODE ABOVE HERE //
 }
 
