@@ -21,6 +21,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function (value) {
+    return value;
+};
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +45,15 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function (value) {
+    if (Array.isArray(value)) {
+      return "array";
+    } else if (value === null) {
+      return "null";
+    }
+    return typeof value;
+  };
+
 
 /** _.first
 * Arguments:
@@ -61,6 +73,17 @@ var _ = {};
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function (array, number) {
+    if (!Array.isArray(array) || number < 0) {
+      return [];
+    }
+    
+    if (number === undefined || typeof number !== 'number') {
+      return array[0];
+    }
+    
+    return array.slice(0, number);
+  };
 
 /** _.last
 * Arguments:
@@ -80,6 +103,21 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (array, number) {
+    if (!Array.isArray(array) || number < 0) {
+      return [];
+    }
+    
+    if (number === undefined || typeof number !== 'number') {
+      return array[array.length - 1];
+    }
+    
+    if (number > array.length) {
+      return array;
+    }
+    
+    return array.slice(-number);
+  };
 
 /** _.indexOf
 * Arguments:
@@ -97,6 +135,14 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function (array, value) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] === value) {
+        return i;
+      }
+    }
+    return -1;
+  };
 
 /** _.contains
 * Arguments:
@@ -113,6 +159,10 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function (array, value) {
+    return _.indexOf(array, value) !== -1 ? true : false;
+  };
+//ternary is programmer's best friend 
 
 /** _.each
 * Arguments:
@@ -130,6 +180,18 @@ var _ = {};
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function (collection, functio) {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        functio(collection[i], i, collection);
+      }
+    } else if (typeof collection === 'object') {
+      for (var key in collection) {
+        functio(collection[key], key, collection);
+      }
+    }
+  };
+//can't use 'function' as a parameter
 
 /** _.unique
 * Arguments:
@@ -141,6 +203,17 @@ var _ = {};
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (array) {
+  var temp = [];
+  
+  _.each(array, function (item) {
+    if (_.indexOf(temp, item) === -1) {
+      temp.push(item);
+    }
+  });
+  
+  return temp;
+};
 
 /** _.filter
 * Arguments:
@@ -158,6 +231,17 @@ var _ = {};
 *   use _.each in your implementation
 */
 
+_.filter = function (array, functio) {
+    var temp = [];
+
+    _.each(array, function (item, index, collection) {
+      if (functio(item, index, collection)) {
+        temp.push(item);
+      }
+  
+    });
+    return temp;
+  };
 
 /** _.reject
 * Arguments:
@@ -172,6 +256,11 @@ var _ = {};
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function (array, functio) {
+    return _.filter(array, function (item, index, collection) {
+      return !functio(item, index, collection);
+    });
+  };
 
 /** _.partition
 * Arguments:
@@ -193,6 +282,7 @@ var _ = {};
 */
 
 
+
 /** _.map
 * Arguments:
 *   1) A collection
@@ -209,6 +299,13 @@ var _ = {};
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (collection, functio) {
+    var temp = [];
+    _.each(collection, function (item, keyOrIndex, collection) {
+      temp.push(functio(item, keyOrIndex, collection));
+    });
+    return temp;
+  };
 
 /** _.pluck
 * Arguments:
