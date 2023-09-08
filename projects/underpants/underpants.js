@@ -281,6 +281,20 @@ _.reject = function (array, functio) {
 }
 */
 
+_.partition = function (array, func) {
+  var trueVals = [];
+  var falseVals = [];
+
+  _.each(array, function (element, key, arr) {
+    if (func(element, key, arr)) {
+      trueVals.push(element);
+    } else {
+      falseVals.push(element);
+    }
+  });
+
+  return [trueVals, falseVals];
+};
 
 
 /** _.map
@@ -318,6 +332,11 @@ _.map = function (collection, functio) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function (array, property) {
+  return _.map(array, function (object) {
+    return object[property];
+  });
+};
 
 /** _.every
 * Arguments:
@@ -340,6 +359,29 @@ _.map = function (collection, functio) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function (collection, func) {
+  if (func === undefined) {
+    return _.every(collection, function (element) {
+      return !!element;
+    });
+  }
+
+  if (Array.isArray(collection)) {
+    for (var i = 0; i < collection.length; i++) {
+      if (!func(collection[i], i, collection)) {
+        return false; 
+      }
+    }
+  } else if (typeof collection === 'object') {
+    for (var key in collection) {
+      if (!func(collection[key], key, collection)) {
+        return false; 
+      }
+    }
+  }
+
+  return true; 
+};
 
 /** _.some
 * Arguments:
@@ -382,6 +424,26 @@ _.map = function (collection, functio) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function (array, func, seed) {
+  var accumulator;
+  var start;
+
+  if (seed === undefined) {
+    // If no seed is given, use the first element as the seed and start from the second element
+    accumulator = array[0];
+    start = 1;
+  } else {
+    // If a seed is given, use it as the initial accumulator value and start from the first element
+    accumulator = seed;
+    start = 0;
+  }
+
+  for (var i = start; i < array.length; i++) {
+    accumulator = func(accumulator, array[i], i);
+  }
+
+  return accumulator;
+};
 
 /** _.extend
 * Arguments:
