@@ -404,6 +404,32 @@ _.every = function (collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+  if (typeof func !== 'function') {
+    for (const key in collection) {
+      if (collection.hasOwnProperty(key) && collection[key]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (Array.isArray(collection)) {
+    for (let i = 0; i < collection.length; i++) {
+      if (func(collection[i], i, collection)) {
+        return true;
+      }
+    }
+  } else if (typeof collection === 'object') {
+    for (const key in collection) {
+      if (collection.hasOwnProperty(key) && func(collection[key], key, collection)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
 
 /** _.reduce
 * Arguments:
@@ -459,6 +485,19 @@ _.reduce = function (array, func, seed) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(obj1, obj2) {
+  for (var key in obj2) {
+      obj1[key] = obj2[key];
+  }
+  for (var i = 2; i < arguments.length; i++) {
+      var tempObj = arguments[i];
+      for (var key in tempObj) {
+          obj1[key] = tempObj[key];
+      }
+  }
+  return obj1;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
